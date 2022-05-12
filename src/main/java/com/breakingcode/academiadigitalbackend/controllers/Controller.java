@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/GetAll")
+@RequestMapping("/GetAll")
 public class Controller {
     @Autowired
     private IAcademiaDigitalService AcademiaDigitalService;
 
     @GetMapping
-    @RequestMapping(value = "consultar", method = RequestMethod.GET)
+    //@RequestMapping(value = "consultar", method = RequestMethod.GET)
     public ResponseEntity<?> Consultar() {
 
         List<String> Response = this.AcademiaDigitalService.getAllTrainees();
