@@ -1,2 +1,2 @@
 # academiaDigital-backend-BC
-Detail
+Detail2
