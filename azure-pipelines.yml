@@ -1,3 +1,6 @@
+variables:
+  System.debug: true
+
 trigger:
 - main
 
