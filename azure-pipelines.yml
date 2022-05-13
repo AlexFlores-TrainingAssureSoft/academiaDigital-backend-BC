@@ -29,3 +29,13 @@ steps:
   inputs:
     ArtifactName: 'drop'
     PathtoPublish: '$(build.artifactstagingdirectory)'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1 (95769b1d-2152-41ad-a8e7-0b5b80d2b9bb)'
+    appType: 'webApp'
+    WebAppName: 'academia-digital-api-ms'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.jar'
+    enableCustomDeployment: true
+    DeploymentType: 'webDeploy'
