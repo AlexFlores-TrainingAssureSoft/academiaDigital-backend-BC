@@ -24,4 +24,5 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: $(Build.ArtifactsStagingDirectory)
-    ArtifactName: SampleSpringBootBuild
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
