@@ -38,7 +38,7 @@ stages:
             PathtoPublish: '$(build.artifactstagingdirectory)'
 
  - stage: Deploy
-   displayName: Build
+   displayName: Deploy
    dependsOn: BuildStage
    condition: and(succeeded(),eq(variables['Build.SourceBranch'], 'refs/heads/main'))
    jobs:
