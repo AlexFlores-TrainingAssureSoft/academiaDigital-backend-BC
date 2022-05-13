@@ -22,13 +22,15 @@ public class Controller {
         List<Trainee> response = AcademiaDigitalService.getAllTrainees();
         return ResponseEntity.ok(response);
     }
+
+
     @RequestMapping(path = "/GetById", method = RequestMethod.GET)
     public ResponseEntity<?> GetById(String uuid) {
 
         List<Trainee> response = AcademiaDigitalService.getAllTrainees();
         return ResponseEntity.ok(response);
     }
-    @RequestMapping(path = "/DeleteById", method = RequestMethod.POST)
+    @RequestMapping(path = "/DeleteById", method = RequestMethod.DELETE)
     public ResponseEntity<?> DeleteById (String uuid) {
 
         String response = AcademiaDigitalService.deleteById(uuid);

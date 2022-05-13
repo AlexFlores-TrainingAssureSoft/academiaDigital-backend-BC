@@ -11,7 +11,7 @@ import java.util.stream.StreamSupport;
 
 @Service
 public class AcademiaDigitalServiceImpl implements IAcademiaDigitalService {
-    private IRepository repository;
+    private final IRepository repository;
 
     public AcademiaDigitalServiceImpl(IRepository repository){
         this.repository=repository;
