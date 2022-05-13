@@ -9,12 +9,43 @@ public class Trainee extends Person{
     private String group;
     private String feedback;
 
-    public Trainee(List<Modules> scoreModule, String headTrainer, String group, String feedback) {
-        super(UUID.fromString("24b2286e-330b-4fac-8cc0-9eeee5cbabce"), "Pedro", "Picapiedra",
-                "picapiedra@gmail.com", "piedra dura 12", "56254355");
+    public Trainee(UUID guid, String firstName,String lastName, String email,String address, String mobile,List<Modules> scoreModule, String headTrainer, String group, String feedback) {
+        super(guid,firstName,lastName,email,address,mobile);
         this.scoreModule = scoreModule;
         this.headTrainer = headTrainer;
         this.group = group;
+        this.feedback = feedback;
+    }
+
+    public List<Modules> getScoreModule() {
+        return scoreModule;
+    }
+
+    public void setScoreModule(List<Modules> scoreModule) {
+        this.scoreModule = scoreModule;
+    }
+
+    public String getHeadTrainer() {
+        return headTrainer;
+    }
+
+    public void setHeadTrainer(String headTrainer) {
+        this.headTrainer = headTrainer;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
 }
