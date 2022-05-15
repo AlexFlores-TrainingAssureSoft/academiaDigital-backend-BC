@@ -5,7 +5,6 @@ pr:
   branches:
     include:
       - main
-
 pool:
   vmImage: ubuntu-latest
 
@@ -31,27 +30,30 @@ stages:
           inputs:
             SourceFolder: '$(System.DefaultWorkingDirectory)'
             Contents: '**/target/*.jar'
-            TargetFolder: '$(build.artifactstagingdirectory)'
+            TargetFolder: $(Build.ArtifactStagingDirectory)
         - task: PublishBuildArtifacts@1
           inputs:
             ArtifactName: 'drop'
-            PathtoPublish: '$(build.artifactstagingdirectory)'
+            PathtoPublish: $(Build.ArtifactStagingDirectory)
 
  - stage: Deploy
    displayName: Deploy
-   #dependsOn: BuildStage
-   #condition: and(succeeded(),eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+   dependsOn: BuildStage
+   condition: and(succeeded(),eq(variables['Build.SourceBranch'], 'main'))
    jobs:
-    - job: Deploy
-      displayName: Deployment on Azure
-      steps:
-      - task: AzureRmWebAppDeployment@4
-        inputs:
-          ConnectionType: 'AzureRM'
-          azureSubscription: 'Azure subscription 1 (95769b1d-2152-41ad-a8e7-0b5b80d2b9bb)'
-          appType: 'webApp'
-          WebAppName: 'academia-digital-api-ms'
-          packageForLinux: '$(build.artifactstagingdirectory)/**/**/*.jar'
-          enableCustomDeployment: true
-          DeploymentType: 'webDeploy'
-
+    - deployment: Deploy Windows WebApp
+      displayName: Deploy Windows WebApp
+      environment: $(environmentName)
+      strategy:
+        runOnce:
+         deploy:
+          steps:
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'Azure subscription 1 (95769b1d-2152-41ad-a8e7-0b5b80d2b9bb)'
+              appType: 'webApp'
+              WebAppName: 'academia-digital-api-ms'
+              packageForLinux: '$(Pipeline.Workspace)/drop/**/**/*.jar'
+              enableCustomDeployment: true
+              DeploymentType: 'webDeploy'
