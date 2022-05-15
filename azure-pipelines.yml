@@ -46,14 +46,13 @@ stages:
     - job: Deploy
       displayName: Deployment on Azure
       steps:
-      - checkout: azure-pipelines-deploy
       - task: AzureRmWebAppDeployment@4
         inputs:
           ConnectionType: 'AzureRM'
           azureSubscription: 'Azure subscription 1 (95769b1d-2152-41ad-a8e7-0b5b80d2b9bb)'
           appType: 'webApp'
           WebAppName: 'academia-digital-api-ms'
-          packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.jar'
+          packageForLinux: '$(build.artifactstagingdirectory)/**/*.jar'
           enableCustomDeployment: true
           DeploymentType: 'webDeploy'
 
