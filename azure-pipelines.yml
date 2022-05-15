@@ -41,8 +41,8 @@ stages:
    dependsOn: BuildStage
    condition: and(succeeded(),eq(variables['Build.SourceBranch'], 'main'))
    jobs:
-    - deployment: Deploy Windows WebApp
-      displayName: Deploy Windows WebApp
+    - deployment: DeployWindowsWebApp
+      displayName: DeployWindowsWebApp
       environment: $(environmentName)
       strategy:
         runOnce:
