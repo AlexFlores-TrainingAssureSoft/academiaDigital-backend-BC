@@ -32,30 +32,31 @@ stages:
           inputs:
             SourceFolder: '$(System.DefaultWorkingDirectory)'
             Contents: '**/target/*.jar'
-            TargetFolder: '$(build.artifactstagingdirectory)'
+            TargetFolder: $(Build.ArtifactStagingDirectory)
         - task: PublishBuildArtifacts@1
           inputs:
             ArtifactName: 'drop'
-            PathtoPublish: '$(build.artifactstagingdirectory)'
+            PathtoPublish: $(Build.ArtifactStagingDirectory)
 
  - stage: Deploy
    displayName: Deploy
    #dependsOn: BuildStage
    #condition: and(succeeded(),eq(variables['Build.SourceBranch'], 'main'))
    jobs:
-    - job: Deploy
-      displayName: Deployment on Azure
-      steps:
-      - task: CmdLine@2
-        inputs:
-          script: 'tree'
-      - task: AzureRmWebAppDeployment@4
-        inputs:
-          ConnectionType: 'AzureRM'
-          azureSubscription: 'Azure subscription 1 (95769b1d-2152-41ad-a8e7-0b5b80d2b9bb)'
-          appType: 'webApp'
-          WebAppName: 'academia-digital-api-ms'
-          packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.jar'
-          enableCustomDeployment: true
-          DeploymentType: 'webDeploy'
+    - deployment: DeployLinuxWebApp
+      displayName: Deploy Linux Web App
+      environment: $(environmentName)
+      strategy:
+        runOnce:
+         deploy:
+          steps:
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'Azure subscription 1 (95769b1d-2152-41ad-a8e7-0b5b80d2b9bb)'
+              appType: 'webApp'
+              WebAppName: 'academia-digital-api-ms'
+              packageForLinux: '$(Pipeline.Workspace)/drop/**/**/*.jar'
+              enableCustomDeployment: true
+              DeploymentType: 'webDeploy'
 
