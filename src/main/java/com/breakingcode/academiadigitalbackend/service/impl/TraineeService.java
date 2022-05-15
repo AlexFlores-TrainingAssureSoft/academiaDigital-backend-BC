@@ -1,19 +1,15 @@
 package com.breakingcode.academiadigitalbackend.service.impl;
-
 import com.breakingcode.academiadigitalbackend.entity.Trainee;
 import com.breakingcode.academiadigitalbackend.repository.IRepository;
-import com.breakingcode.academiadigitalbackend.service.IAcademiaDigitalService;
+import com.breakingcode.academiadigitalbackend.service.ITraineeService;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
-public class AcademiaDigitalServiceImpl implements IAcademiaDigitalService {
+public class TraineeService implements ITraineeService {
     private final IRepository repository;
 
-    public AcademiaDigitalServiceImpl(IRepository repository){
+    public TraineeService(IRepository repository){
         this.repository=repository;
     }
     @Override
