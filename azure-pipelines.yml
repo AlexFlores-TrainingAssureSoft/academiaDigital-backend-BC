@@ -26,12 +26,6 @@ stages:
             publishJUnitResults: true
             testResultsFiles: '**/surefire-reports/TEST-*.xml'
             goals: 'package'
-        - task: CopyFiles@2
-          displayName: 'Copyfiles to artifact staging directory'
-          inputs:
-            SourceFolder: '$(System.DefaultWorkingDirectory)'
-            Contents: '**/target/*.jar'
-            TargetFolder: '$(build.artifactstagingdirectory)'
 
  - stage: Deploy
    displayName: Deploy
@@ -41,6 +35,12 @@ stages:
     - job: Deploy
       displayName: Deployment on Azure
       steps:
+      - task: CopyFiles@2
+        displayName: 'Copyfiles to artifact staging directory'
+        inputs:
+          SourceFolder: '$(System.DefaultWorkingDirectory)'
+          Contents: '**/target/*.jar'
+          TargetFolder: '$(build.artifactstagingdirectory)'
       - task: PublishBuildArtifacts@1
         inputs:
           ArtifactName: 'drop'
