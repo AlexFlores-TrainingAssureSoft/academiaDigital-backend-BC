@@ -46,7 +46,7 @@ stages:
     - job: Deploy
       displayName: Deployment on Azure
       steps:
-      - checkout: none
+      - checkout: azure-pipelines-deploy
       - task: AzureRmWebAppDeployment@4
         inputs:
           ConnectionType: 'AzureRM'
