@@ -40,11 +40,11 @@ stages:
 
  - stage: Deploy
    displayName: Deploy
-   #dependsOn: BuildStage
-   #condition: and(succeeded(),eq(variables['Build.SourceBranch'], 'main'))
+   dependsOn: BuildStage
+   condition: and(succeeded(),eq(variables['Build.SourceBranch'], 'main'))
    jobs:
-    - deployment: DeployLinuxWebApp
-      displayName: Deploy Linux Web App
+    - deployment: Deploy Windows WebApp
+      displayName: Deploy Windows WebApp
       environment: $(environmentName)
       strategy:
         runOnce:
