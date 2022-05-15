@@ -46,6 +46,7 @@ stages:
     - job: Deploy
       displayName: Deployment on Azure
       steps:
+      - checkout: none
       - task: AzureRmWebAppDeployment@4
         inputs:
           ConnectionType: 'AzureRM'
