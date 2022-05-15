@@ -1,0 +1,59 @@
+trigger:
+- main
+pr:
+  drafts: false
+  branches:
+    include:
+      - main
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+ - stage: BuildStage
+   displayName: Build
+   jobs:
+     - job: Build
+       displayName: Build App
+       steps:
+        - task: Maven@3
+          inputs:
+            mavenPomFile: 'pom.xml'
+            mavenOptions: '-Xmx3072m'
+            javaHomeOption: 'JDKVersion'
+            jdkVersionOption: '1.17'
+            jdkArchitectureOption: 'x64'
+            publishJUnitResults: true
+            testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            goals: 'package'
+        - task: CopyFiles@2
+          displayName: 'Copyfiles to artifact staging directory'
+          inputs:
+            SourceFolder: '$(System.DefaultWorkingDirectory)'
+            Contents: '**/target/*.jar'
+            TargetFolder: $(Build.ArtifactStagingDirectory)
+        - task: PublishBuildArtifacts@1
+          inputs:
+            ArtifactName: 'drop'
+            PathtoPublish: $(Build.ArtifactStagingDirectory)
+
+ - stage: Deploy
+   displayName: Deploy
+   #dependsOn: BuildStage
+   #condition: and(succeeded(),eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+   jobs:
+    - deployment: DeployWindowsWebApp
+      displayName: DeployWindowsWebApp
+      environment: $(environmentName)
+      strategy:
+        runOnce:
+         deploy:
+          steps:
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'Azure subscription 1 (95769b1d-2152-41ad-a8e7-0b5b80d2b9bb)'
+              appType: 'webApp'
+              WebAppName: 'academia-digital-api-ms'
+              packageForLinux: '$(Pipeline.Workspace)/drop/**/**/*.jar'
+              enableCustomDeployment: true
+              DeploymentType: 'webDeploy'
