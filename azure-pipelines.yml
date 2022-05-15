@@ -5,7 +5,8 @@ pr:
   branches:
     include:
       - main
-
+variables:
+  System.debug: true
 pool:
   vmImage: ubuntu-latest
 
