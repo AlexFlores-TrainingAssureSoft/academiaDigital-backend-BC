@@ -32,10 +32,6 @@ stages:
             SourceFolder: '$(System.DefaultWorkingDirectory)'
             Contents: '**/target/*.jar'
             TargetFolder: '$(build.artifactstagingdirectory)'
-        - task: PublishBuildArtifacts@1
-          inputs:
-            ArtifactName: 'drop'
-            PathtoPublish: '$(build.artifactstagingdirectory)'
 
  - stage: Deploy
    displayName: Deploy
@@ -45,6 +41,10 @@ stages:
     - job: Deploy
       displayName: Deployment on Azure
       steps:
+      - task: PublishBuildArtifacts@1
+        inputs:
+          ArtifactName: 'drop'
+          PathtoPublish: '$(build.artifactstagingdirectory)'
       - task: AzureRmWebAppDeployment@4
         inputs:
           ConnectionType: 'AzureRM'
