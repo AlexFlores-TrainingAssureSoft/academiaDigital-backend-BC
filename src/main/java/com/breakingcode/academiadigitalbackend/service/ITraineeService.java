@@ -4,10 +4,10 @@ import com.breakingcode.academiadigitalbackend.entity.Trainee;
 
 import java.util.List;
 
-public interface IAcademiaDigitalService {
+public interface ITraineeService {
     List<Trainee> getAllTrainees();
-    Trainee GetById(String uuid);
-    String save(Trainee trainee);
+    Trainee getById(String uuid);
+    String postTrainee(Trainee trainee);
     String deleteById(String uuid);
 
 }
