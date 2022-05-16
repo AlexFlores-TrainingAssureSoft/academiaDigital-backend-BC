@@ -22,7 +22,6 @@ public class TraineeServiceTest {
 
     @InjectMocks
     private TraineeService traineeService;
-
     private List<Trainee> traineesList = new ArrayList<>(Arrays.asList(
             new Trainee("Alex","Flores", "Alex@gmail.com","calle siempre viva","5123654","Carlos","4","buen chango"),
             new Trainee("Mauri","Gamarra", "Mauri@gmail.com","calle siempre viva2","54412654","Rodri","4","aplicado"),
@@ -64,6 +63,7 @@ public class TraineeServiceTest {
     public void deleteById_if_success_should_return_ok() {
         when(repository.deleteById("0280aafd-5cdd-4b76-b326-387fd525c16d")).thenReturn("OK");
         Assert.assertEquals("OK",traineeService.deleteById("0280aafd-5cdd-4b76-b326-387fd525c16d"));
+
     }
 
     @Test
