@@ -12,7 +12,6 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -24,13 +23,12 @@ public class TraineeServiceTest {
     @InjectMocks
     private TraineeService traineeService;
 
-    List <Modules> dev = new ArrayList<>();
     private List<Trainee> traineesList = new ArrayList<>(Arrays.asList(
-            new Trainee(UUID.fromString("0280aafd-5cdd-4b76-b326-387fd525c16d"),"Alex","Flores", "Alex@gmail.com","calle siempre viva","5123654",dev,"Carlos","4","buen chango"),
-            new Trainee(UUID.fromString("08d04158-bd32-42f7-a14c-9a73c69c758f"),"Mauri","Gamarra", "Mauri@gmail.com","calle siempre viva2","54412654",dev,"Rodri","4","aplicado"),
-            new Trainee(UUID.fromString("bbfa90b5-45a1-422c-925f-0e5d80474f7d"),"Melisa","Chiri", "Melisa@gmail.com","calle siempre viva3","5422654",dev,"Jorge","4","aplicada"),
-            new Trainee(UUID.fromString("3486946f-e0b3-41b9-9545-ad075308c2ba"),"Jose","Medina", "Jose@gmail.com","calle siempre viva4","5411654",dev,"Jose","4","buen chango")));
-    Trainee testTrainee = new Trainee(UUID.fromString("bbfa90b5-45a1-422c-925f-0e5d80474f7d"),"Melisa","Chiri", "Melisa@gmail.com","calle siempre viva3","5422654",dev,"Jorge","4","aplicada");
+            new Trainee("Alex","Flores", "Alex@gmail.com","calle siempre viva","5123654","Carlos","4","buen chango"),
+            new Trainee("Mauri","Gamarra", "Mauri@gmail.com","calle siempre viva2","54412654","Rodri","4","aplicado"),
+            new Trainee("Melisa","Chiri", "Melisa@gmail.com","calle siempre viva3","5422654","Jorge","4","aplicada"),
+            new Trainee("Jose","Medina", "Jose@gmail.com","calle siempre viva4","5411654","Jose","4","buen chango")));
+    Trainee testTrainee = new Trainee("Melisa","Chiri", "Melisa@gmail.com","calle siempre viva3","5422654","Jorge","4","aplicada");
 
     @Before
     public void setUp() {

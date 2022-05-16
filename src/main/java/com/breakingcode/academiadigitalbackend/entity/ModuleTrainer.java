@@ -6,8 +6,8 @@ public class ModuleTrainer extends Person{
     private String feedback;
     private String module;
 
-    public ModuleTrainer(UUID guid, String firtsName, String lastName, String email, String address, String mobile) {
-        super( guid,firtsName, lastName, email, address, mobile);
+    public ModuleTrainer( String firstName, String lastName, String email, String address, String mobile) {
+        super(firstName, lastName, email, address, mobile);
     }
 
     public String getFeedback() {

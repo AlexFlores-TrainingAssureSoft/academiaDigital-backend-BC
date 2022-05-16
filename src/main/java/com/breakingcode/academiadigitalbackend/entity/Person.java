@@ -10,9 +10,8 @@ public class Person {
     private String address;
     private String mobile;
 
-    public Person(UUID guid, String firstName, String lastName, String email, String address, String mobile) {
-        //this.guid = UUID.randomUUID();
-        this.guid=guid;
+    public Person(String firstName, String lastName, String email, String address, String mobile) {
+        this.guid = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
