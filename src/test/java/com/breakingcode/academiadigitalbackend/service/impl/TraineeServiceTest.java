@@ -59,13 +59,13 @@ public class TraineeServiceTest {
     @Test
     public void postTrainee_should_return_OK() {
         when(repository.postTrainee(testTrainee)).thenReturn("OK");
-        Assert.assertEquals("OK",traineeService.postTrainee(testTrainee));
+        Assert.assertEquals("K",traineeService.postTrainee(testTrainee));
     }
 
     @Test
     public void deleteById_if_success_should_return_ok() {
         when(repository.deleteById("0280aafd-5cdd-4b76-b326-387fd525c16d")).thenReturn("OK");
-        Assert.assertEquals("OK",traineeService.deleteById("0280aafd-5cdd-4b76-b326-387fd525c16d"));
+        Assert.assertEquals("K",traineeService.deleteById("0280aafd-5cdd-4b76-b326-387fd525c16d"));
     }
 
     @Test
