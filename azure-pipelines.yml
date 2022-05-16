@@ -20,7 +20,7 @@ stages:
             mavenPomFile: 'pom.xml'
             goals: 'test'
             publishJUnitResults: true
-            mavenOptions: 'Default'
+            mavenOptions: '-Xmx3072m'
             javaHomeOption: 'JDKVersion'
             jdkVersionOption: '1.17'
             jdkArchitectureOption: 'x64'
