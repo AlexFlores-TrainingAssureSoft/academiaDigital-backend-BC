@@ -26,12 +26,6 @@ stages:
             testResultsFiles: '**/surefire-reports/TEST-*.xml'
             testRunTitle: 'runTest'
             codeCoverageToolOption: 'Cobertura'
-            codeCoverageFailIfEmpty: true
-            codeCoverageRestoreOriginalPomXml: true
-            mavenVersionOption: 'Default'
-            mavenAuthenticateFeed: false
-            effectivePomSkip: false
-            sonarQubeRunAnalysis: true
             goals: 'package'
         - task: CopyFiles@2
           displayName: 'Copyfiles to artifact staging directory'
