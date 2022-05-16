@@ -17,7 +17,6 @@ public class TraineeService implements ITraineeService {
 
         return this.repository.getAll();
     }
-
     @Override
     public Trainee getById(String uuid) {
         return this.repository.getById(uuid);

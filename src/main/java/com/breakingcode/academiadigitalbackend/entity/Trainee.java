@@ -1,5 +1,6 @@
 package com.breakingcode.academiadigitalbackend.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,9 +10,9 @@ public class Trainee extends Person{
     private String group;
     private String feedback;
 
-    public Trainee(UUID guid, String firstName,String lastName, String email,String address, String mobile,List<Modules> scoreModule, String headTrainer, String group, String feedback) {
-        super(guid,firstName,lastName,email,address,mobile);
-        this.scoreModule = scoreModule;
+    public Trainee(String firstName,String lastName, String email,String address, String mobile, String headTrainer, String group, String feedback) {
+        super(firstName,lastName,email,address,mobile);
+        this.scoreModule = new ArrayList<>();
         this.headTrainer = headTrainer;
         this.group = group;
         this.feedback = feedback;
