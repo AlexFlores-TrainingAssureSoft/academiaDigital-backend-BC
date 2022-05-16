@@ -18,12 +18,12 @@ public class Repository implements IRepository {
             new Trainee(UUID.fromString("3486946f-e0b3-41b9-9545-ad075308c2ba"),"Jose","Medina", "Jose@gmail.com","calle siempre viva4","5411654",dev,"Jose","4","buen chango")));
 
     @Override
-    public List<Trainee> findAll() {
+    public List<Trainee> getAll() {
         return traineesList;
     }
 
     @Override
-    public Trainee findById(String uuid) {
+    public Trainee getById(String uuid) {
         for (Trainee trainee:traineesList) {
             if(trainee.getGuid().equals(UUID.fromString(uuid))){
                 return trainee;
@@ -34,7 +34,7 @@ public class Repository implements IRepository {
 
 
     @Override
-    public String save(Trainee trainee) {
+    public String postTrainee(Trainee trainee) {
         traineesList.add(trainee);
         return "OK";
     }
@@ -42,13 +42,6 @@ public class Repository implements IRepository {
 
     @Override
     public String deleteById(String uuid) {
-//        for (int i = 0; i < traineesList.size()-1; i++) {
-//            if (traineesList.get(i).getGuid().equals(UUID.fromString(uuid))){
-//                traineesList.remove(i);
-//                return "OK";
-//            }
-//        }
-
         for (Trainee trainee:traineesList) {
             if(trainee.getGuid().equals(UUID.fromString(uuid))){
                 traineesList.remove(trainee);

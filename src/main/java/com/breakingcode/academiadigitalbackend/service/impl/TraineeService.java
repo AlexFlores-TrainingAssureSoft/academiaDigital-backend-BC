@@ -15,17 +15,17 @@ public class TraineeService implements ITraineeService {
     @Override
     public List<Trainee> getAllTrainees() {
 
-        return this.repository.findAll();
+        return this.repository.getAll();
     }
 
     @Override
-    public Trainee GetById(String uuid) {
-        return this.repository.findById(uuid);
+    public Trainee getById(String uuid) {
+        return this.repository.getById(uuid);
     }
 
     @Override
-    public String save(Trainee trainee) {
-        return this.repository.save(trainee);
+    public String postTrainee(Trainee trainee) {
+        return this.repository.postTrainee(trainee);
     }
 
     @Override

@@ -24,7 +24,7 @@ public class Controller {
     @RequestMapping(path = "/GetById", method = RequestMethod.GET)
     public ResponseEntity<?> GetById(String uuid) {
 
-        Trainee response = AcademiaDigitalService.GetById(uuid);
+        Trainee response = AcademiaDigitalService.getById(uuid);
         return ResponseEntity.ok(response);
     }
 
@@ -40,7 +40,7 @@ public class Controller {
     @RequestMapping(path = "/PostNewTrainee", method = RequestMethod.POST)
     public ResponseEntity<?> CreateTrainee(Trainee trainee) {
 
-        String  response = AcademiaDigitalService.save(trainee);
+        String  response = AcademiaDigitalService.postTrainee(trainee);
         return ResponseEntity.ok(response);
     }
 }

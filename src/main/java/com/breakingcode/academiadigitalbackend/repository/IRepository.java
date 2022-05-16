@@ -7,8 +7,8 @@ import java.util.UUID;
 
 public interface IRepository {
 
-    List<Trainee> findAll();
-    Trainee findById(String uuid);
-    String save(Trainee trainee);
+    List<Trainee> getAll();
+    Trainee getById(String uuid);
+    String postTrainee(Trainee trainee);
     String deleteById(String uuid);
 }
