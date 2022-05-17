@@ -43,4 +43,12 @@ public class Controller {
         String  response = AcademiaDigitalService.postTrainee(trainee);
         return ResponseEntity.ok(response);
     }
+
+    @RequestMapping(path = "/UpdateTrainee", method = RequestMethod.POST)
+    public ResponseEntity<?> UpdateTrainee(Trainee trainee) {
+
+        String  response = AcademiaDigitalService.updateTrainee(trainee);
+        return ResponseEntity.ok(response);
+    }
+
 }

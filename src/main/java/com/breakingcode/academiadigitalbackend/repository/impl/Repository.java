@@ -49,4 +49,15 @@ public class Repository implements IRepository {
         }
         return "This id doesn's exist";
     }
+
+    @Override
+    public String updateTrainee(Trainee traineeUpdate) {
+        for(Trainee trainee:traineesList){
+            if(trainee.getGuid().equals(traineeUpdate.getGuid())){
+                traineesList.set(traineesList.indexOf(trainee),traineeUpdate);
+                return "OK";
+            }
+        }
+        return  "Doesn't find trainee";
+    }
 }

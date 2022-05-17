@@ -11,4 +11,5 @@ public interface IRepository {
     Trainee getById(String uuid);
     String postTrainee(Trainee trainee);
     String deleteById(String uuid);
+    String updateTrainee(Trainee trainee);
 }
