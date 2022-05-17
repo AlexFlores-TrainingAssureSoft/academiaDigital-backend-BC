@@ -36,5 +36,4 @@ public class TraineeService implements ITraineeService {
     public String updateTrainee(Trainee trainee) {
         return this.repository.updateTrainee(trainee);
     }
-
 }

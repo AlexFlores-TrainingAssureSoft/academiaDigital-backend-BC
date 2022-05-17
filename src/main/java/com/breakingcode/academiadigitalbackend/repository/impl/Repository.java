@@ -16,7 +16,6 @@ public class Repository implements IRepository {
             new Trainee("Mauri","Gamarra", "Mauri@gmail.com","calle siempre viva2","54412654","Rodri","4","aplicado"),
             new Trainee("Melisa","Chiri", "Melisa@gmail.com","calle siempre viva3","5422654","Jorge","4","aplicada"),
             new Trainee("Jose","Medina", "Jose@gmail.com","calle siempre viva4","5411654","Jose","4","buen chango")));
-
     @Override
     public List<Trainee> getAll() {
         return traineesList;

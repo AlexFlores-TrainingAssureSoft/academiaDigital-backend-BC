@@ -22,7 +22,6 @@ public class TraineeServiceTest {
 
     @InjectMocks
     private TraineeService traineeService;
-
     private List<Trainee> traineesList = new ArrayList<>(Arrays.asList(
             new Trainee("Alex","Flores", "Alex@gmail.com","calle siempre viva","5123654","Carlos","4","buen chango"),
             new Trainee("Mauri","Gamarra", "Mauri@gmail.com","calle siempre viva2","54412654","Rodri","4","aplicado"),
