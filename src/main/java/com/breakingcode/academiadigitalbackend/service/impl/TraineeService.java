@@ -32,4 +32,9 @@ public class TraineeService implements ITraineeService {
         return this.repository.deleteById(uuid);
     }
 
+    @Override
+    public String updateTrainee(Trainee trainee) {
+        return this.repository.updateTrainee(trainee);
+    }
+
 }

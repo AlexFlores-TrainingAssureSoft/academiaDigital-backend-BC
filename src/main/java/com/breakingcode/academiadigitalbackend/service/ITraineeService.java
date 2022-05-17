@@ -9,5 +9,5 @@ public interface ITraineeService {
     Trainee getById(String uuid);
     String postTrainee(Trainee trainee);
     String deleteById(String uuid);
-
+    String updateTrainee(Trainee trainee);
 }
