@@ -1,0 +1,14 @@
+version: "3.2"
+services:
+  app:
+    container_name: 'javaspring'
+    build: .
+    restart: on-failure
+    ports:
+      - 8080:8080
+    stdin_open: true
+    tty: true
+networks:
+  default:
+    external:
+      name: external-example
